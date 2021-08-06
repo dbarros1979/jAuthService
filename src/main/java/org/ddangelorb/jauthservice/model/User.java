@@ -26,7 +26,7 @@ public class User {
 
 	  @Size(min = 4, max = 255, message = "Minimum name length: 4 characters")
 	  @Column(unique = true, nullable = false)
-	  private String name;
+	  private String username;
 
 	  @Size(min = 8, message = "Minimum password length: 8 characters")
 	  @Column(nullable = false)
