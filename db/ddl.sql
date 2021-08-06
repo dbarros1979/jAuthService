@@ -1,43 +1,27 @@
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    phone VARCHAR(255) UNIQUE NOT NULL,
-    firstname VARCHAR(100) NOT NULL,
-    surname VARCHAR(100) NOT NULL,
+    name VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NULL,
+    firstname VARCHAR(100) NULL,
+    surname VARCHAR(100) NULL,
     avatar VARCHAR(100) NULL,
     active INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS profiles
+CREATE TABLE IF NOT EXISTS roles
 (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     active INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS usersprofiles
+CREATE TABLE IF NOT EXISTS usersroles
 (
     id SERIAL PRIMARY KEY,
     idusers INT NOT NULL,
-    idprofiles INT NOT NULL,
+    idroles INT NOT NULL,
     active INT NOT NULL,
     FOREIGN KEY (idusers) REFERENCES users (id),
-    FOREIGN KEY (idprofiles) REFERENCES profiles (id)
-);
-
-CREATE TABLE IF NOT EXISTS permissions
-(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    active INT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS profilespermissions
-(
-    id SERIAL PRIMARY KEY,
-    idprofiles INT NOT NULL,
-    idpermissions INT NOT NULL,
-    active INT NOT NULL,
-    FOREIGN KEY (idprofiles) REFERENCES profiles (id),
-    FOREIGN KEY (idpermissions) REFERENCES permissions (id)
+    FOREIGN KEY (idroles) REFERENCES roles (id)
 );
