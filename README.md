@@ -60,6 +60,41 @@ Once the dependencies are properly installed, follow the steps below:
 ```
 
 
+# How to run this project
+
+Navigate to `http://localhost:8080/swagger-ui.html` in your browser to check everything is working correctly. You can change the default port in the `application.properties` file.
+
+- Make a GET request to `/users/me` to check you're not authenticated. You should receive a response with a `403` with an `Access Denied` message since you haven't set your valid JWT token yet.
+
+```
+$ curl -X GET http://localhost:8080/users/me
+```
+
+- Make a POST request to `/users/signin` with the default admin user we programatically created to get a valid JWT token
+
+```
+$ curl -X POST 'http://localhost:8080/users/signin?username=admin&password=admin'
+```
+
+- Add the JWT token as a Header parameter and make the initial GET request to `/users/me` again
+
+```
+$ curl -X GET http://localhost:8080/users/me -H 'Authorization: Bearer <JWT_TOKEN>'
+```
+
+- You should get a similar response to this one, meaning that you're now authenticated
+
+```javascript
+{
+  "id": 1,
+  "username": "admin",
+  "email": "admin@email.com",
+  "roles": [
+    "ROLE_ADMIN"
+  ]
+}
+```
+
 ## License
 
 MIT [license](https://github.com/ddangelorb/jAuthService/blob/main/LICENSE)
