@@ -33,42 +33,37 @@ Once the dependencies are properly installed, follow the steps below:
 - Start the PostgreSQL and run the scripts to create the database and get the load data.
 
 ```console
-  $ shp2pgsql -s 4326 -I shapefile/Administrative_Limit_SP.shp > db/Administrative_Limit_SP.sql
-  $ shp2pgsql -s 4326 -I shapefile/Vegetation_SP_WSG84.shp > db/Vegetation_SP_WSG84.sql
   $ brew services start postgresql
   $ psql postgres
   postgres=# \conninfo
-  postgres=# CREATE DATABASE jsbpstgis;
-  postgres=# \c jsbpstgis
-  jsbpstgis=# CREATE EXTENSION postgis;
-  jsbpstgis=# \i db/ddl.sql
-  jsbpstgis=# \i db/sys_config.sql
-  jsbpstgis=# \i db/Administrative_Limit_SP.sql 
-  jsbpstgis=# \i db/Vegetation_SP_WSG84.sql
-  jsbpstgis=# \i db/FieldsAnswers-FROM-Vegetation_SP_WSG84.sql
-  jsbpstgis=# create user ujsbpstgis;
-  jsbpstgis=# alter user ujsbpstgis with encrypted password '<your really secure password>';
-  jsbpstgis=# grant all privileges on database jsbpstgis to ujsbpstgis;
-  jsbpstgis=#
-  jsbpstgis=# \q
+  postgres=# CREATE DATABASE jauthservice;
+  postgres=# \c jauthservice
+  jauthservice=# \i db/ddl.sql
+  jauthservice=# \i db/sys_config.sql
+  jauthservice=# create user ujauthservice;
+  jauthservice=# alter user ujauthservice with encrypted password '<your really secure password>';
+  jauthservice=# grant all privileges on database jauthservice to ujauthservice;
+  jauthservice=#
+  jauthservice=# \q
 ```
 
-- Start the Spring Web Service
+- Install dependencies
 
-  $ start ....
-  $ http://localhost:8080/swagger-ui.html
-  $ http://localhost:8080/v2/api-docs
+```console
+  $ mvn install
+```
+
+- Run the project
+
+```console
+  $ mvn spring-boot:run
+```
+
 
 ## License
 
-MIT [license](https://github.com/ddangelorb/jSBPstGis/blob/main/LICENSE)
+MIT [license](https://github.com/ddangelorb/jAuthService/blob/main/LICENSE)
 
 ## Author
 
 [Daniel D'Angelo R. Barros](https://github.com/ddangelorb)
-
-https://medium.com/@xoor/jwt-authentication-service-44658409e12c
-
-https://github.com/murraco/spring-boot-jwt
-
-http://localhost:8080/h2-console/
