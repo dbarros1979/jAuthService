@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserRequestDTO {
+public class UsersRequestDTO {
 	  @ApiModelProperty(position = 0)
 	  private String username;
 	  @ApiModelProperty(position = 1)

@@ -10,7 +10,7 @@ import org.ddangelorb.jauthservice.model.Roles;
 
 @Getter
 @Setter
-public class UserResponseDTO {
+public class UsersResponseDTO {
 	  @ApiModelProperty(position = 0)
 	  private Integer id;
 	  @ApiModelProperty(position = 1)

@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 
 import org.ddangelorb.jauthservice.exception.CustomException;
 import org.ddangelorb.jauthservice.model.Users;
-import org.ddangelorb.jauthservice.repository.UserRepository;
+import org.ddangelorb.jauthservice.repository.UsersRepository;
 import org.ddangelorb.jauthservice.security.JwtTokenProvider;
 
 @Service
-public class UserService {
+public class UsersService {
 	  @Autowired
-	  private UserRepository userRepository;
+	  private UsersRepository userRepository;
 
 	  @Autowired
 	  private PasswordEncoder passwordEncoder;

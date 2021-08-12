@@ -7,12 +7,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import org.ddangelorb.jauthservice.model.Users;
-import org.ddangelorb.jauthservice.repository.UserRepository;
+import org.ddangelorb.jauthservice.repository.UsersRepository;
 
 @Service
 public class MyUserDetails implements UserDetailsService {
 	  @Autowired
-	  private UserRepository userRepository;
+	  private UsersRepository userRepository;
 
 	  @Override
 	  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
