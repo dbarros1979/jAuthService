@@ -16,12 +16,9 @@ CREATE TABLE IF NOT EXISTS roles
     active INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS usersroles
+CREATE TABLE IF NOT EXISTS users_roles
 (
-    id SERIAL PRIMARY KEY,
-    idusers INT NOT NULL,
-    idroles INT NOT NULL,
-    active INT NOT NULL,
-    FOREIGN KEY (idusers) REFERENCES users (id),
-    FOREIGN KEY (idroles) REFERENCES roles (id)
+    users_id INT NOT NULL,
+    roles INT NOT NULL,
+    FOREIGN KEY (users_id) REFERENCES users (id)
 );

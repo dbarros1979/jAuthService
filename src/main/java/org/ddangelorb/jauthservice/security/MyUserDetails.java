@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import org.ddangelorb.jauthservice.model.User;
+import org.ddangelorb.jauthservice.model.Users;
 import org.ddangelorb.jauthservice.repository.UserRepository;
 
 @Service
@@ -16,7 +16,7 @@ public class MyUserDetails implements UserDetailsService {
 
 	  @Override
 	  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-	    final User user = userRepository.findByUsername(username);
+	    final Users user = userRepository.findByUsername(username);
 
 	    if (user == null) {
 	      throw new UsernameNotFoundException("User '" + username + "' not found");

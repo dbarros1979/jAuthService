@@ -70,3 +70,5 @@ MIT [license](https://github.com/ddangelorb/jSBPstGis/blob/main/LICENSE)
 https://medium.com/@xoor/jwt-authentication-service-44658409e12c
 
 https://github.com/murraco/spring-boot-jwt
+
+http://localhost:8080/h2-console/

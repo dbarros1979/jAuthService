@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import org.ddangelorb.jauthservice.exception.CustomException;
-import org.ddangelorb.jauthservice.model.User;
+import org.ddangelorb.jauthservice.model.Users;
 import org.ddangelorb.jauthservice.repository.UserRepository;
 import org.ddangelorb.jauthservice.security.JwtTokenProvider;
 
@@ -38,7 +38,7 @@ public class UserService {
 	    }
 	  }
 
-	  public String signup(User user) {
+	  public String signup(Users user) {
 	    if (!userRepository.existsByUsername(user.getUsername())) {
 	      user.setPassword(passwordEncoder.encode(user.getPassword()));
 	      userRepository.save(user);
@@ -52,15 +52,15 @@ public class UserService {
 	    userRepository.activateByUsername(username);
 	  }
 
-	  public User search(String username) {
-	    User user = userRepository.findByUsername(username);
+	  public Users search(String username) {
+	    Users user = userRepository.findByUsername(username);
 	    if (user == null) {
 	      throw new CustomException("The user doesn't exist", HttpStatus.NOT_FOUND);
 	    }
 	    return user;
 	  }
 
-	  public User whoami(HttpServletRequest req) {
+	  public Users whoami(HttpServletRequest req) {
 	    return userRepository.findByUsername(jwtTokenProvider.getUsername(jwtTokenProvider.resolveToken(req)));
 	  }
 

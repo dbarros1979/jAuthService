@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.ddangelorb.jauthservice.dto.UserRequestDTO;
 import org.ddangelorb.jauthservice.dto.UserResponseDTO;
-import org.ddangelorb.jauthservice.model.User;
+import org.ddangelorb.jauthservice.model.Users;
 import org.ddangelorb.jauthservice.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class UserController {
 	      @ApiResponse(code = 403, message = "Access denied"), //
 	      @ApiResponse(code = 422, message = "Username is already in use")})
 	  public String signup(@ApiParam("Signup User") @RequestBody UserRequestDTO user) {
-	    return userService.signup(modelMapper.map(user, User.class));
+	    return userService.signup(modelMapper.map(user, Users.class));
 	  }
 
 	  @PostMapping("/activate")

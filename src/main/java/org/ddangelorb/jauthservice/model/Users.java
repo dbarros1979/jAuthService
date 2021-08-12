@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class Users {
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Integer id;
@@ -49,5 +49,5 @@ public class User {
 	  private Integer active;
 	  
 	  @ElementCollection(fetch = FetchType.EAGER)
-	  List<Role> roles;
+	  List<Roles> roles;
 }

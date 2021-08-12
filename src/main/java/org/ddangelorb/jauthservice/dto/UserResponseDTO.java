@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import org.ddangelorb.jauthservice.model.Role;
+import org.ddangelorb.jauthservice.model.Roles;
 
 @Getter
 @Setter
@@ -16,5 +16,5 @@ public class UserResponseDTO {
 	  @ApiModelProperty(position = 1)
 	  private String username;
 	  @ApiModelProperty(position = 2)
-	  List<Role> roles;
+	  List<Roles> roles;
 }

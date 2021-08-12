@@ -23,7 +23,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-import org.ddangelorb.jauthservice.model.Role;
+import org.ddangelorb.jauthservice.model.Roles;
 import org.ddangelorb.jauthservice.exception.CustomException;
 
 
@@ -47,7 +47,7 @@ public class JwtTokenProvider {
 	    secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
 	  }
 
-	  public String createToken(String username, List<Role> roles) {
+	  public String createToken(String username, List<Roles> roles) {
 
 	    Claims claims = Jwts.claims().setSubject(username);
 	    claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority())).filter(Objects::nonNull).collect(Collectors.toList()));

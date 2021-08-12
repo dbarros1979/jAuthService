@@ -1,13 +1,13 @@
 package org.ddangelorb.jauthservice.repository;
 
-import org.ddangelorb.jauthservice.model.User;
+import org.ddangelorb.jauthservice.model.Users;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<Users, Integer> {
 	  boolean existsByUsername(String username);
 
-	  User findByUsername(String username);
+	  Users findByUsername(String username);
 
 	  @Transactional
 	  void activateByUsername(String username);
