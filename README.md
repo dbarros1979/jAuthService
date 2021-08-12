@@ -26,8 +26,8 @@ Once the dependencies are properly installed, follow the steps below:
 - Clone the project locally
 
 ```console
-    $ git clone https://github.com/ddangelorb/jSBPstGis.git
-    $ cd jSBPstGis
+    $ git clone https://github.com/ddangelorb/jAuthService.git
+    $ cd jAuthService
 ```
 
 - Start the PostgreSQL and run the scripts to create the database and get the load data.
