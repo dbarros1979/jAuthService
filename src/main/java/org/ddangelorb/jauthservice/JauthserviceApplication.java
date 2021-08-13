@@ -31,20 +31,26 @@ public class JauthserviceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... params) throws Exception {
-		Users admin = new Users();
-	    admin.setUsername("admin");
-	    admin.setPassword("admin");
-	    admin.setEmail("admin@email.com");
-	    admin.setRoles(new ArrayList<Roles>(Arrays.asList(Roles.ROLE_ADMIN)));
+		if (!userService.existsByUsername("admin")) {
+			Users admin = new Users();
+		    admin.setUsername("admin");
+		    admin.setPassword("admin");
+		    admin.setEmail("admin@email.com");
+		    admin.setActive(1);
+		    admin.setRoles(new ArrayList<Roles>(Arrays.asList(Roles.ROLE_ADMIN)));
+		
+		    userService.signup(admin);
+		}
 	
-	    userService.signup(admin);
-	
-	    Users client = new Users();
-	    client.setUsername("client");
-	    client.setPassword("client");
-	    client.setEmail("client@email.com");
-	    client.setRoles(new ArrayList<Roles>(Arrays.asList(Roles.ROLE_CLIENT)));
-	
-	    userService.signup(client);
+		if (!userService.existsByUsername("client")) {
+		    Users client = new Users();
+		    client.setUsername("client");
+		    client.setPassword("client");
+		    client.setEmail("client@email.com");
+		    client.setActive(1);
+		    client.setRoles(new ArrayList<Roles>(Arrays.asList(Roles.ROLE_CLIENT)));
+		
+		    userService.signup(client);
+		}
 	}
 }

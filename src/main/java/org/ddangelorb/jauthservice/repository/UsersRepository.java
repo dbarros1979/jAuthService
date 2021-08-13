@@ -9,7 +9,7 @@ public interface UsersRepository extends JpaRepository<Users, Integer> {
 
 	  Users findByUsername(String username);
 
-	  @Transactional
-	  void activateByUsername(String username);
+	  //@Transactional
+	  //void activateByUsername(String username);
 
 }

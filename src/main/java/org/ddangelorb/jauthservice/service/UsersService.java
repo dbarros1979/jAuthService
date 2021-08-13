@@ -28,6 +28,10 @@ public class UsersService {
 
 	  @Autowired
 	  private AuthenticationManager authenticationManager;
+	  
+	  public boolean existsByUsername(String username) {
+		  return userRepository.existsByUsername(username);
+	  }
 
 	  public String signin(String username, String password) {
 	    try {
@@ -39,7 +43,7 @@ public class UsersService {
 	  }
 
 	  public String signup(Users user) {
-	    if (!userRepository.existsByUsername(user.getUsername())) {
+	    if (!existsByUsername(user.getUsername())) {
 	      user.setPassword(passwordEncoder.encode(user.getPassword()));
 	      userRepository.save(user);
 	      return jwtTokenProvider.createToken(user.getUsername(), user.getRoles());
@@ -49,7 +53,7 @@ public class UsersService {
 	  }
 
 	  public void activate(String username) {
-	    userRepository.activateByUsername(username);
+	    //userRepository.activateByUsername(username);
 	  }
 
 	  public Users search(String username) {
